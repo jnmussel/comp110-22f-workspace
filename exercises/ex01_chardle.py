@@ -6,7 +6,7 @@ if len(fiveletterword) != int(5):
     print("Error: Word must contain 5 characters")
 else:
     singleletter: str = str(input("Enter a single character: "))
-    if len(singleletter) != int (1):
+    if len(singleletter) != int(1):
         print("Error: Character must be a single character.")
     else:
         print("Searching for " + singleletter + " in " + fiveletterword)
@@ -37,14 +37,3 @@ else:
     else:
         if total == 0:
             print("No instances of " + singleletter + " found in " + fiveletterword)
-
-            
-
-
-
-
-
-
-
-
-
