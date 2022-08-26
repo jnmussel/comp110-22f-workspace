@@ -9,6 +9,7 @@ else:
     singleletter: str = str(input("Enter a single character: "))
     if len(singleletter) != 1:
         print("Error: Character must be a single character.")
+        exit()
     else:
         print("Searching for " + singleletter + " in " + fiveletterword)
 
