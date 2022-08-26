@@ -2,12 +2,11 @@
 
 __author__ = "730471672"
 fiveletterword: str = str(input("Enter a 5 letter word: "))
-if len(fiveletterword) != 5:
+if len(fiveletterword) != int(5):
     print("Error: Word must contain 5 characters")
-    exit()
 else:
     singleletter: str = str(input("Enter a single character: "))
-    if len(singleletter) != 1:
+    if len(singleletter) != int (1):
         print("Error: Character must be a single character.")
     else:
         print("Searching for " + singleletter + " in " + fiveletterword)
@@ -38,3 +37,14 @@ else:
     else:
         if total == 0:
             print("No instances of " + singleletter + " found in " + fiveletterword)
+
+            
+
+
+
+
+
+
+
+
+
