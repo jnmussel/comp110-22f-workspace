@@ -20,12 +20,12 @@ while i < len(guess):
     else:
         alt: bool = False
         j: int = 0
-        while alt == False and j < len(secret):
+        while alt is not True and j < len(secret):
             if secret[j] == guess[i]:
                 alt: bool = True
             else:
                 j = j + 1
-        if alt == True:
+        if alt is True:
             color = color + str("\U0001F7E8")
         else:
             color = color + str("\U00002B1C")
@@ -33,4 +33,3 @@ while i < len(guess):
 
 print(color)
 print(outcome)
-    
