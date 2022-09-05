@@ -18,7 +18,17 @@ while i < len(guess):
     if guess[i] == secret[i]:
         color = color + str("\U0001F7E9")
     else:
-        color = color + str("\U00002B1C")
+        alt: bool = False
+        j: int = 0
+        while alt == False and j < len(secret):
+            if secret[j] == guess[i]:
+                alt: bool = True
+            else:
+                j = j + 1
+        if alt == True:
+            color = color + str("\U0001F7E8")
+        else:
+            color = color + str("\U00002B1C")
     i = i + 1
 
 print(color)
