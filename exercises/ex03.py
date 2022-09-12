@@ -61,6 +61,10 @@ def main() -> None:
         turn = turn + 1
     if turn == 6 and playing is True:
         print("X/6 - Sorry, try again tomorrow!")
+        playing = False
+
+if __name__ == "__main__":
+    main()
 
 exit()
 
