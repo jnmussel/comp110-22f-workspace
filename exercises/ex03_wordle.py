@@ -4,7 +4,7 @@ __author__ = "730471672"
 
 
 def contains_char(word: str, letter: str) -> bool:
-    """Verifies if a word contains a given letter. """
+    """Verifies if a word contains a given letter."""
     assert len(letter) == 1
     i: int = 0
     check: bool = False
@@ -16,7 +16,7 @@ def contains_char(word: str, letter: str) -> bool:
 
 
 def emojified(guess: str, secret: str) -> str:
-    """Function for colored boxes. """
+    """Function for colored boxes."""
     assert len(guess) == len(secret)
     j: int = 0
     color: str = ""
@@ -33,7 +33,7 @@ def emojified(guess: str, secret: str) -> str:
 
 
 def input_guess(length: int) -> str:
-    """Makes sure user inputs word with right amount of letters. """
+    """Makes sure user inputs word with right amount of letters."""
     hey: str = input("Enter a " + str(length) + " character word: ")
     while len(hey) != length:
         hey: str = input("That wasn't " + str(length) + " chars! Try again : ")
