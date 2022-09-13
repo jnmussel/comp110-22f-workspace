@@ -24,7 +24,7 @@ def emojified(guess: str, secret: str) -> str:
         if guess[j] == secret[j]:
             color = color + str("\U0001F7E9")
         else:
-            if contains_char(secret, guess[j]) == True:
+            if contains_char(secret, guess[j]) is True:
                 color = color + str("\U0001F7E8")
             else:
                 color = color + str("\U00002B1C")
@@ -52,7 +52,6 @@ def main() -> None:
             print(emojified(gameguess, gsecret))
             print("You won in " + str(turn) + "/6 turns!")
             playing = False
-            exit()
         else:
             print(emojified(gameguess, gsecret))
         turn = turn + 1
