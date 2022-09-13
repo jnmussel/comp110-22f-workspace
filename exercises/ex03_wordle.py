@@ -55,7 +55,7 @@ def main() -> None:
         else:
             print(emojified(gameguess, gsecret))
         turn = turn + 1
-    if turn == 6 and playing is True:
+    if turn > 6 and playing is True:
         print("X/6 - Sorry, try again tomorrow!")
         playing = False
 
