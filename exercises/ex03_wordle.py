@@ -1,6 +1,7 @@
-"""EX03- Structured Wordle"""
+"""EX03- Structured Wordle."""
 
 __author__ = "730471672"
+
 
 def contains_char(word: str, letter: str) -> bool:
     """Verifies if a word contains a given letter. """
@@ -13,6 +14,7 @@ def contains_char(word: str, letter: str) -> bool:
         i = i + 1
     return check
 
+
 def emojified(guess: str, secret: str) -> str:
     """Function for colored boxes. """
     assert len(guess) == len(secret)
@@ -22,19 +24,13 @@ def emojified(guess: str, secret: str) -> str:
         if guess[j] == secret[j]:
             color = color + str("\U0001F7E9")
         else:
-            alt: bool = False
-            k: int = 0
-            while alt is not True and k < len(secret):
-                if secret [k] == guess [j]:
-                    alt: bool = True
-                else:
-                    k = k + 1
-            if alt is True:
+            if contains_char(secret, guess[j]) == True:
                 color = color + str("\U0001F7E8")
             else:
                 color = color + str("\U00002B1C")
         j = j + 1
     return color
+
 
 def input_guess(length: int) -> str:
     """Makes sure user inputs word with right amount of letters. """
@@ -43,6 +39,7 @@ def input_guess(length: int) -> str:
         hey: str = input("That wasn't " + str(length) + " chars! Try again : ")
     return hey
     
+
 def main() -> None:
     """The entrypoint of the program and main game loop."""
     turn: int = 1
@@ -62,6 +59,7 @@ def main() -> None:
     if turn == 6 and playing is True:
         print("X/6 - Sorry, try again tomorrow!")
         playing = False
+
 
 if __name__ == "__main__":
     main()
