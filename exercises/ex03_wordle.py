@@ -34,7 +34,7 @@ def emojified(guess: str, secret: str) -> str:
 
 def input_guess(length: int) -> str:
     """Makes sure user inputs word with right amount of letters. """
-    hey: str = input("Enter a " + str(length) +  " character word: ")
+    hey: str = input("Enter a " + str(length) + " character word: ")
     while len(hey) != length:
         hey: str = input("That wasn't " + str(length) + " chars! Try again : ")
     return hey
