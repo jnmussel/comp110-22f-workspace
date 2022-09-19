@@ -22,12 +22,12 @@ def max(input: list[int]) -> int:
     if len(input) == 0:
         raise ValueError("max() arg is an empty List")
     k: int = 0
-    var2: int = input[0]
-    while k < len(input) - 1:
-        if input[k + 1] > input[k]:
-            var2 = input[k + 1]
-    k = k + 1
-    return var2
+    curr_max: int = input[0]
+    while k < len(input):
+        if input[k] > curr_max:
+            curr_max = input[k]
+        k = k + 1
+    return curr_max
     
 
 def is_equal(list2: list[int], list3: list[int]) -> bool:
@@ -43,7 +43,7 @@ def is_equal(list2: list[int], list3: list[int]) -> bool:
     while j < var3:
         if list2[j] != list3[j]:
             var4 = False
-    j = j + 1
+        j = j + 1
     return var4
         
     
