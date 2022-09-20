@@ -4,7 +4,7 @@ __author__ = "730471672"
 
 
 def all(list1: list[int], int1: int) -> bool:
-    """all should return a bool indicating whether or not all the ints in the list are the same as the given int."""
+    """All should return a bool indicating whether or not all the ints in the list are the same as the given int."""
     i: int = 0
     var1: bool = True
     if len(list1) == 0:
@@ -40,10 +40,10 @@ def is_equal(list2: list[int], list3: list[int]) -> bool:
         var3: int = len(list2) - 1
     j: int = 0
     var4: bool = True
-    while j < var3:
+    while j < var3 and var4 is not False:
         if list2[j] != list3[j]:
             var4 = False
         j = j + 1
     return var4
-        
+
     
