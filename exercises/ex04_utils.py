@@ -32,18 +32,12 @@ def max(input: list[int]) -> int:
 
 def is_equal(list2: list[int], list3: list[int]) -> bool:
     """Checks for identical indices."""
-    if len(list2) > len(list3):
-        var3: int = len(list3) - 1
-    elif len(list2) == len(list3):
-        var3: int = len(list2) - 1
-    else:
-        var3: int = len(list2) - 1
-    j: int = 0
-    var4: bool = True
-    while j < var3 and var4 is not False:
-        if list2[j] != list3[j]:
-            var4 = False
-        j = j + 1
-    return var4
-
+    i: int = 0
+    if len(list2) != len(list3):
+        return False
+    while i < len(list2):
+        if list2[i] != list3[i]:
+            return False
+        i = i + 1
+    return True
     
