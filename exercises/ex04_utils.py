@@ -21,12 +21,12 @@ def max(input: list[int]) -> int:
     """Finds maximum value of a list."""
     if len(input) == 0:
         raise ValueError("max() arg is an empty List")
-    k: int = 0
+    i: int = 0
     curr_max: int = input[0]
-    while k < len(input):
-        if input[k] > curr_max:
-            curr_max = input[k]
-        k = k + 1
+    while i < len(input):
+        if input[i] > curr_max:
+            curr_max = input[i]
+        i = i + 1
     return curr_max
     
 
