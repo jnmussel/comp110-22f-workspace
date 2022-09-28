@@ -17,8 +17,9 @@ def only_evens(input: list[int]) -> list[int]:
 def concat(list1: list[int], list2: list[int]) -> list[int]:
     """Combines two lists."""
     i: int = 0
+    final_list = list1
     while i < len(list2):
-        final_list = list1.append(list2[i])
+        final_list.append(list2[i])
         i += 1
     return final_list
 
@@ -29,7 +30,7 @@ def sub(input_list: list[int], start: int, end: int) -> list[int]:
     if start < 0:
         start = 0
     if end > len(input_list):
-        end = len(input_list) - 1
+        end = len(input_list)
     if len(input_list) == 0:
         return end_list
     if start > len(input_list):
