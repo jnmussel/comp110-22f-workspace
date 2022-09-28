@@ -18,9 +18,10 @@ def concat(list1: list[int], list2: list[int]) -> list[int]:
     """Combines two lists."""
     i: int = 0
     while i < len(list2):
-        list1.append(list2[i])
+        final_list = list1.append(list2[i])
         i += 1
-    return list1
+    return final_list
+
 
 def sub(input_list: list[int], start: int, end: int) -> list[int]:
     """Returns a subset between given indices."""
