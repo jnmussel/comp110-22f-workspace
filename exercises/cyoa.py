@@ -3,7 +3,7 @@
 __author__ = "730471672"
 
 
-POINTS: int = 0
+points: int = 0
 player: str = ""
 
 
@@ -18,9 +18,9 @@ def greet() -> None:
 
 def coin_points(player_points: int) -> int:
     """Adds points to the global score."""
-    global POINTS
+    global points
     POINTS += player_points
-    return POINTS
+    return points
 
 
 def coin_flip_correct(player_int: int) -> bool:
@@ -34,6 +34,7 @@ def coin_flip_correct(player_int: int) -> bool:
         
 
 def main() -> None:
+    """Main function call for game."""
     greet()
     print("Let's start! ")
     playing = True
@@ -48,7 +49,7 @@ def main() -> None:
                 print(f"Total points: {coin_points(0)}")
                 playing is False
         elif playing_input == "T":
-            if coin_flip_correct(1) == True:
+            if coin_flip_correct(1) is True:
                 print("You guessed correctly! ")
                 print(f"Total points: {coin_points(1)}")
             else:
@@ -59,12 +60,12 @@ def main() -> None:
             main()
         elif playing_input == "Q":
             print("Thanks for playing!")
-            print(f"Total points : {POINTS}")
+            print(f"Total points : {points}")
             exit()
         else:
             print("Not valid input.")
-    print(f"Thanks for playing! Your score: {POINTS}")
+    print(f"Thanks for playing! Your score: {points}")
 
 
 if __name__ == "__main__":
-  main()
+    main()
