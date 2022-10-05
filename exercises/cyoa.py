@@ -52,7 +52,7 @@ def main() -> None:
             print(f"Total points: {coin_points(2)}")
         
         elif playing_input == "Q":
-            print("Thanks for playing!")
+            print(f"Thanks for playing, {player}!")
             print(f"Total points : {coin_points(0)}")
             exit()
         
@@ -61,6 +61,7 @@ def main() -> None:
 
         else:
             print("Sorry! You guessed wrong. Game over.")
+            print(f"Thanks for playing, {player}!")
             print(f"Total points: {coin_points(1)}")
             playing = False
 
