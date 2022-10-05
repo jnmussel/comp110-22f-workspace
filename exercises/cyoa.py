@@ -6,7 +6,9 @@ __author__ = "730471672"
 POINTS: int = 0
 player: str = ""
 
+
 def greet() -> None:
+    """Greets player and gets name."""
     player_name: str = input("Welcome to the coin flipping game! What is your name? ")
     global player
     player = player_name
@@ -15,13 +17,14 @@ def greet() -> None:
 
 
 def coin_points(player_points: int) -> int:
-    """Adds points to the global score. """
+    """Adds points to the global score."""
     global POINTS
     POINTS += player_points
     return POINTS
 
 
 def coin_flip_correct(player_int: int) -> bool:
+    """Coin flip procedure."""
     from random import randint
     result: int = randint(0, 1)
     if player_int == result:
@@ -30,21 +33,20 @@ def coin_flip_correct(player_int: int) -> bool:
         return False
         
 
-
 def main() -> None:
     greet()
     print("Let's start! ")
     playing = True
-    while playing == True:
+    while playing is True:
         playing_input: str = input("Flipping coin! Go ahead and call it! ")
         if playing_input == "H":
-            if coin_flip_correct(0) == True:
+            if coin_flip_correct(0) is True:
                 print("You guessed correctly! ")
                 print(f"Total points: {coin_points(1)}")
             else:
                 print("Sorry! You guessed wrong. Game over.")
                 print(f"Total points: {coin_points(0)}")
-                playing = False
+                playing is False
         elif playing_input == "T":
             if coin_flip_correct(1) == True:
                 print("You guessed correctly! ")
@@ -61,14 +63,8 @@ def main() -> None:
             exit()
         else:
             print("Not valid input.")
-    
     print(f"Thanks for playing! Your score: {POINTS}")
+
 
 if __name__ == "__main__":
   main()
-        
-
-
-
-    
-
