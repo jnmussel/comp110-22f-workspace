@@ -1,6 +1,8 @@
-"""to test stuff."""
+"""Random docstring."""
 
-shaneefa = [True, 8, "pi", 6, 3.4]
 
-for me in shaneefa:
-    print(me)
+thelist: list[str] = ["FLORIDA", "NOTRE DAME", "VIRGINIA TECH", "PITTSBURGH", "GEORGIA TECH", "NC STATE"]
+
+from random import randint
+
+print(thelist[randint(0, 5)])
