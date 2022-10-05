@@ -37,7 +37,6 @@ def coin_flip_correct(player_int: int) -> bool:
 
 def main() -> None:
     """Main function call and game loop."""
-
     greet()
     
     playing = True
@@ -66,6 +65,5 @@ def main() -> None:
             playing = False
 
         
-
 if __name__ == "__main__":
     main()
