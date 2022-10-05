@@ -2,13 +2,16 @@
 
 __author__ = "730471672"
 
-player: str = input("Welcome to the coin flipping game! What is your name? ")
+
 POINTS: int = 0
+player: str = ""
 
 def greet() -> None:
+    player_name: str = input("Welcome to the coin flipping game! What is your name? ")
     global player
+    player = player_name
     print(f"Welcome {player}! This is a game in which you will try to guess if a coin lands on heads or tails. The objective is to guess as many right as possible in a row! For each guessed correctly, a point will be added to your score. ")
-    print("To guess heads, enter 'H', to guess tails, enter 'T', to quit the game, enter 'Q', and to begin a new game, enter 'N'. ")
+    print("To guess heads, enter 'H' to guess tails, enter 'T', to quit the game, enter 'Q', and to begin a new game, enter 'N'. ")
 
 
 def coin_points(player_points: int) -> int:
@@ -53,6 +56,8 @@ def main() -> None:
         elif playing_input == "N":
             main()
         elif playing_input == "Q":
+            print("Thanks for playing!")
+            print(f"Total points : {POINTS}")
             exit()
         else:
             print("Not valid input.")
