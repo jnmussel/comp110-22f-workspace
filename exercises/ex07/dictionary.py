@@ -13,7 +13,7 @@ def invert(input_dict: dict[str, str]) -> dict[str, str]:
     return new_dict
 
 
-def favorite_colors(input_dict: dict[str, str]) -> str:
+def favorite_color(input_dict: dict[str, str]) -> str:
     """Returns the most popular color in a dict."""
     max: int = 1
     fav_color: str = ""

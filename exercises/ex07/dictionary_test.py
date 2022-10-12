@@ -2,7 +2,7 @@
 
 __author__ = "730471672"
 
-from exercises.ex07.dictionary import count, favorite_colors, invert
+from exercises.ex07.dictionary import count, favorite_color, invert
 
 
 def test_sum_invert_use() -> None:
@@ -23,19 +23,19 @@ def test_sum_invert_edge_two() -> None:
     assert invert(the_dict) == {"world": "hello", "is": "what", "?": "up"}
 
 
-def test_sum_favorite_colors_edge() -> None:
+def test_sum_favorite_color_edge() -> None:
     """An edge case for favorite colors."""
     the_dict: dict[str, str] = {}
     assert favorite_colors(the_dict) == ""
 
 
-def test_sum_favorite_colors_use_one() -> None:
+def test_sum_favorite_color_use_one() -> None:
     """A use case for favorite colors."""
     the_dict: dict[str, str] = {"bob": "red", "cassidy": "red", "jack": "blue", "dan": "green", "sophie": "blue", "hayden": "red"}
     assert favorite_colors(the_dict) == "red"
 
 
-def test_sum_favorite_colors_use_two() -> None:
+def test_sum_favorite_color_use_two() -> None:
     """Another use case for favorite colors."""
     the_dict: dict[str, str] = {"bob": "red", "cassidy": "red", "jack": "blue", "dan": "green", "sophie": "blue", "hayden": "yellow"}
     assert favorite_colors(the_dict) == "red"
@@ -57,6 +57,3 @@ def test_sum_count_use_two() -> None:
     """Another use case for count."""
     the_list: list[str] = ["1", "2", "3", "1", "2", "3", "2", "1", "3", "5"]
     assert count(the_list) == {"1": 3, "2": 3, "3": 3, "5": 1}
-
-
-
