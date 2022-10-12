@@ -26,19 +26,19 @@ def test_sum_invert_edge_two() -> None:
 def test_sum_favorite_color_edge() -> None:
     """An edge case for favorite colors."""
     the_dict: dict[str, str] = {}
-    assert favorite_colors(the_dict) == ""
+    assert favorite_color(the_dict) == ""
 
 
 def test_sum_favorite_color_use_one() -> None:
     """A use case for favorite colors."""
     the_dict: dict[str, str] = {"bob": "red", "cassidy": "red", "jack": "blue", "dan": "green", "sophie": "blue", "hayden": "red"}
-    assert favorite_colors(the_dict) == "red"
+    assert favorite_color(the_dict) == "red"
 
 
 def test_sum_favorite_color_use_two() -> None:
     """Another use case for favorite colors."""
     the_dict: dict[str, str] = {"bob": "red", "cassidy": "red", "jack": "blue", "dan": "green", "sophie": "blue", "hayden": "yellow"}
-    assert favorite_colors(the_dict) == "red"
+    assert favorite_color(the_dict) == "red"
 
 
 def test_sum_count_edge() -> None:
