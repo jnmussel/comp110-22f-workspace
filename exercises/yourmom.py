@@ -8,6 +8,5 @@ elif haha == str("no"):
 else:
     print("thats not a yes or no answer u stupid ass bitch")
 
-print("\U0001FA99")
 
 exit()
