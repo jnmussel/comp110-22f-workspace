@@ -34,14 +34,17 @@ def columnar(row_table: list[dict[str, str]]) -> dict[str, list[str]]:
 def head(table: dict[str, list[str]], number: int) -> dict[str, list[str]]:
     """Produce a new column-based table with only a fixed number of rows of data for each column."""
     result: dict[str, list[str]] = {}
-    for column in table:
-        i: int = 0
-        the_list: list[str] = []
-        while i < number:
-            the_list.append(table[column][i])
-            i += 1
-        result[column] = the_list
-    return result
+    if number >= len(table):
+        return table
+    else:
+        for column in table:
+            i: int = 0
+            the_list: list[str] = []
+            while i < number:
+                the_list.append(table[column][i])
+                i += 1
+            result[column] = the_list
+        return result
 
 
 def select(table: dict[str, list[str]], input_list: list[str]) -> dict[str, list[str]]:
