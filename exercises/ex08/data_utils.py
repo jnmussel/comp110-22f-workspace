@@ -52,6 +52,12 @@ def select(table: dict[str, list[str]], input_list: list[str]) -> dict[str, list
     return result
 
 
+def concat(table1: dict[str, list[str]], table2: dict[str, list[str]]) -> dict[str, list[str]]:
+    """Combines 2 tables into 1."""
+    result: dict[str, list[str]] = {}
+    return result
+
+
 def count(input_list: list[str]) -> dict[str, int]:
     """Returns a dict of counting number of occurrences of a str in a list."""
     the_dict: dict[str, int] = {}
