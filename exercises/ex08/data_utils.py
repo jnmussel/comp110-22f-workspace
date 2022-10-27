@@ -58,6 +58,10 @@ def select(table: dict[str, list[str]], input_list: list[str]) -> dict[str, list
 def concat(table1: dict[str, list[str]], table2: dict[str, list[str]]) -> dict[str, list[str]]:
     """Combines 2 tables into 1."""
     result: dict[str, list[str]] = {}
+    for column in table1:
+        result[column] = table1[column]
+    for column2 in table2:
+        result[column2] = table2[column2]
     return result
 
 
