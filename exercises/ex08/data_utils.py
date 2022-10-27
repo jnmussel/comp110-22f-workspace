@@ -60,8 +60,11 @@ def concat(table1: dict[str, list[str]], table2: dict[str, list[str]]) -> dict[s
     result: dict[str, list[str]] = {}
     for column in table1:
         result[column] = table1[column]
-    for column2 in table2:
-        result[column2] = table2[column2]
+    for column in table2:
+        if column in result:
+            result[column] += table2[column]
+        else:
+            result[column] = table2[column]
     return result
 
 
