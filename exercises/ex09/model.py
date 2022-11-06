@@ -30,7 +30,7 @@ class Cell:
     """An individual subject in the simulation."""
     location: Point
     direction: Point
-    sickness: int = 0
+    sickness: int = constants.VULNERABLE
 
     def __init__(self, location: Point, direction: Point):
         """Construct a cell with its location and direction."""
@@ -46,7 +46,25 @@ class Cell:
         
     def color(self) -> str:
         """Return the color representation of a cell."""
-        return "black"
+        if self.is_vulnerable == True:
+            return "gray"
+        else:
+            return "blue"
+
+    def contract_disease(self) -> None:
+        self.sickness = constants.INFECTED
+
+    def is_vulnerable(self) -> bool:
+        if self.sickness == constants.VULNERABLE:
+            return True
+        else:
+            return False
+
+    def is_infected(self) -> bool:
+        if self.sickness == constants.INFECTED:
+            return True
+        else:
+            return False
 
 
 class Model:
@@ -55,8 +73,10 @@ class Model:
     population: list[Cell]
     time: int = 0
 
-    def __init__(self, cells: int, speed: float):
+    def __init__(self, cells: int, speed: float, infected_cells: int):
         """Initialize the cells with random locations and directions."""
+        if infected_cells <= 0 or infected_cells >= cells:
+            raise ValueError("Infected cells can't exceed regular cells or be less than zero.")
         self.population = []
         for _ in range(cells):
             start_location: Point = self.random_location()
