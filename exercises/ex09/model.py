@@ -106,6 +106,7 @@ class Model:
 
     def __init__(self, cells: int, speed: float, infected_cells: int, immune_cells: int):
         """Initialize the cells with random locations and directions."""
+        immune_cells: int = 0
         if infected_cells <= 0 or infected_cells >= cells:
             raise ValueError("Infected cells can't exceed regular cells or be less than zero.")
         self.population = []
@@ -114,6 +115,8 @@ class Model:
             start_direction: Point = self.random_direction(speed)
             cell: Cell = Cell(start_location, start_direction)
             self.population.append(cell)
+        for _ in range(infected_cells):
+            self.population[i].contract_disease()
     
     def tick(self) -> None:
         """Update the state of the simulation by one time step."""
@@ -143,7 +146,17 @@ class Model:
 
     def check_contacts(self, other_cell: Cell) -> None:
         """Checks of two cells run into each other."""
+        for cell in population
 
     def is_complete(self) -> bool:
         """Method to indicate when the simulation is complete."""
-        return False
+        result: int = 0
+        for cell in self.population:
+            if cell.is_immune or cell.is_vulnerable:
+                result += 0
+            else:
+                result += 1
+        if result == 0:
+            return True
+        else:
+            return False
