@@ -25,6 +25,13 @@ class Point:
         y: float = self.y + other.y
         return Point(x, y)
 
+    def distance(self, other_point: Point) -> float:
+        """Returns distance between two points"""
+        result: float = 0.0
+        from math import sqrt
+        result = sqrt((self.x - other_point.x)**2 + (self.y - other_point.y)**2)
+        return result
+
 
 class Cell:
     """An individual subject in the simulation."""
@@ -42,29 +49,55 @@ class Cell:
     # the result of adding the self object's location with its
     # direction. Hint: Look at the add method.
     def tick(self) -> None:
+        """Tick function."""
         self.location = self.location.add(self.direction)
-        
-    def color(self) -> str:
-        """Return the color representation of a cell."""
-        if self.is_vulnerable == True:
-            return "gray"
-        else:
-            return "blue"
 
     def contract_disease(self) -> None:
+        """Infects a cell."""
         self.sickness = constants.INFECTED
 
     def is_vulnerable(self) -> bool:
+        """Makes a cell vulnerable."""
         if self.sickness == constants.VULNERABLE:
             return True
         else:
             return False
 
     def is_infected(self) -> bool:
+        """Defines a cell as infected."""
         if self.sickness == constants.INFECTED:
             return True
         else:
             return False
+
+    def color(self) -> str:
+        """Return the color representation of a cell."""
+        if self.is_vulnerable == True:
+            return "gray"
+        if self.is_immune == True:
+            return "yellow"
+        else:
+            return "blue"
+
+    def contact_with(self, other_cell: Cell) -> None:
+        """When two cells make contact."""
+        if self.is_vulnerable and other_cell.is_infected:
+            self.contract_disease
+        elif other_cell.is_vulnerable and self.is_infected:
+            self.contract_disease
+
+    def immunize(self) -> None:
+        """Assigns IMMUNE constant to sickness attribute of the cell."""
+        self.sickness = constants.IMMUNE
+
+    def is_immune(self) -> bool:
+        """Checks if sickness attribute is equal to IMMUNE constant."""
+        if self.sickness == constants.IMMUNE:
+            return True
+        else:
+            return False
+
+
 
 
 class Model:
@@ -109,6 +142,10 @@ class Model:
         if cell.location.x > constants.MAX_X:
             cell.location.x = constants.MAX_X
             cell.direction.x *= -1.0
+
+    def check_contacts(self, other_cell: Cell) -> None:
+        """Checks of two cells run into each other."""
+
 
     def is_complete(self) -> bool:
         """Method to indicate when the simulation is complete."""
