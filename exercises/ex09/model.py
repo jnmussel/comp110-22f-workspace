@@ -6,7 +6,7 @@ from exercises.ex09 import constants
 from math import sin, cos, pi
 
 
-__author__ = ""  # TODO
+__author__ = "730471672"
 
 
 class Point:
@@ -26,7 +26,7 @@ class Point:
         return Point(x, y)
 
     def distance(self, other_point: Point) -> float:
-        """Returns distance between two points"""
+        """Returns distance between two points."""
         result: float = 0.0
         from math import sqrt
         result = sqrt((self.x - other_point.x)**2 + (self.y - other_point.y)**2)
@@ -65,19 +65,19 @@ class Cell:
 
     def is_infected(self) -> bool:
         """Defines a cell as infected."""
-        if self.sickness == constants.INFECTED:
+        if self.sickness >= constants.INFECTED:
             return True
         else:
             return False
 
     def color(self) -> str:
         """Return the color representation of a cell."""
-        if self.is_vulnerable == True:
+        if self.is_vulnerable():
             return "gray"
-        if self.is_immune == True:
+        if self.is_immune():
             return "yellow"
-        else:
-            return "blue"
+        if self.is_infected():
+            return "purple"
 
     def contact_with(self, other_cell: Cell) -> None:
         """When two cells make contact."""
@@ -98,15 +98,13 @@ class Cell:
             return False
 
 
-
-
 class Model:
     """The state of the simulation."""
 
     population: list[Cell]
     time: int = 0
 
-    def __init__(self, cells: int, speed: float, infected_cells: int):
+    def __init__(self, cells: int, speed: float, infected_cells: int, immune_cells: int):
         """Initialize the cells with random locations and directions."""
         if infected_cells <= 0 or infected_cells >= cells:
             raise ValueError("Infected cells can't exceed regular cells or be less than zero.")
@@ -145,7 +143,6 @@ class Model:
 
     def check_contacts(self, other_cell: Cell) -> None:
         """Checks of two cells run into each other."""
-
 
     def is_complete(self) -> bool:
         """Method to indicate when the simulation is complete."""
