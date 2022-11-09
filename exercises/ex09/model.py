@@ -51,6 +51,10 @@ class Cell:
     def tick(self) -> None:
         """Tick function."""
         self.location = self.location.add(self.direction)
+        if self.is_infected():
+            tick += 1
+        if self.sickness >= constants.RECOVERY_PERIOD:
+            self.immunize()
 
     def contract_disease(self) -> None:
         """Infects a cell."""
@@ -81,10 +85,11 @@ class Cell:
 
     def contact_with(self, other_cell: Cell) -> None:
         """When two cells make contact."""
-        if self.is_vulnerable and other_cell.is_infected:
-            self.contract_disease
-        elif other_cell.is_vulnerable and self.is_infected:
-            self.contract_disease
+        if self.is_immune():
+            self.immunize()
+        elif other_cell.is_vulnerable() and self.is_infected():
+            self.contract_disease()
+            other_cell.contract_disease()
 
     def immunize(self) -> None:
         """Assigns IMMUNE constant to sickness attribute of the cell."""
@@ -107,7 +112,9 @@ class Model:
     def __init__(self, cells: int, speed: float, infected_cells: int, immune_cells: int):
         """Initialize the cells with random locations and directions."""
         immune_cells: int = 0
-        if infected_cells <= 0 or infected_cells >= cells:
+        if infected_cells <= 0:
+            raise ValueError("Infected cells can't exceed regular cells or be less than zero.")
+        elif infected_cells >= cells:
             raise ValueError("Infected cells can't exceed regular cells or be less than zero.")
         self.population = []
         for _ in range(cells):
@@ -116,7 +123,7 @@ class Model:
             cell: Cell = Cell(start_location, start_direction)
             self.population.append(cell)
         for _ in range(infected_cells):
-            self.population[i].contract_disease()
+            self.population[_].contract_disease()
     
     def tick(self) -> None:
         """Update the state of the simulation by one time step."""
@@ -124,6 +131,7 @@ class Model:
         for cell in self.population:
             cell.tick()
             self.enforce_bounds(cell)
+        self.check_contacts()
 
     def random_location(self) -> Point:
         """Generate a random location."""
