@@ -151,10 +151,15 @@ class Model:
         if cell.location.x > constants.MAX_X:
             cell.location.x = constants.MAX_X
             cell.direction.x *= -1.0
+        if cell.location.x < constants.MIN_X:
+            cell.direction.x *= -1.0
+        if cell.location.y > constants.MAX_X:
+            cell.direction.y *= -1.0
+        if cell.location.y < constants.MIN_X:
+            cell.direction.y *= -1.0
 
     def check_contacts(self, other_cell: Cell) -> None:
-        """Checks of two cells run into each other."""
-        for cell in population
+        """Checks of two cells run into each other.""",
 
     def is_complete(self) -> bool:
         """Method to indicate when the simulation is complete."""
