@@ -111,7 +111,7 @@ class Model:
 
     def __init__(self, cells: int, speed: float, infected_cells: int, immune_cells: int):
         """Initialize the cells with random locations and directions."""
-        immune_cells: int = 0
+        immunecells: int = 0
         if infected_cells <= 0:
             raise ValueError("Infected cells can't exceed regular cells or be less than zero.")
         elif infected_cells >= cells:
@@ -160,16 +160,23 @@ class Model:
 
     def check_contacts(self, other_cell: Cell) -> None:
         """Checks of two cells run into each other.""",
+        i: int = 0
+        j: int = i + 1
+        while i < len(self.population):
+            j = i + 1
+            while j < len(self.population):
+                dist: float = self.population[i].location.distance(self.population[j].location)
+                if dist < constants.CELL_RADIUS:
+                    self.population[i].contact_with(self.population[j])
+                j += 1
+            i += 1
 
     def is_complete(self) -> bool:
         """Method to indicate when the simulation is complete."""
-        result: int = 0
+        i: int = 0
         for cell in self.population:
-            if cell.is_immune or cell.is_vulnerable:
-                result += 0
-            else:
-                result += 1
-        if result == 0:
+            if cell.is_vulnerable() or cell.is_immune():
+                i += 1
+        if i == len(self.population):
             return True
-        else:
-            return False
+        return False
