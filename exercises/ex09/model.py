@@ -87,7 +87,7 @@ class Cell:
         """When two cells make contact."""
         if self.is_immune():
             self.immunize()
-        elif other_cell.is_vulnerable() and self.is_infected():
+        elif self.is_infected() and other_cell.is_infected():
             self.contract_disease()
             other_cell.contract_disease()
 
