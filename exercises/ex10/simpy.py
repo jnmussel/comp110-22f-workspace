@@ -16,7 +16,7 @@ class Simpy:
 
     def __repr__(self) -> str:
         """Repr for printing."""
-        print(f"Simpy({str(self.values)})")
+        return f"Simpy({self.values})"
 
     def fill(self, the_float: float, the_int: int) -> None:
         """Fills a list with a specific number of repeating values."""
@@ -25,7 +25,7 @@ class Simpy:
             self.values.append(the_float)
             i += 1
     
-    def arange(self, start: int, stop: int, step: float) -> None:
+    def arange(self, start: int, stop: int, step: float = 1.0) -> None:
         """Fills in a list with a start, stop, and step."""
         assert step != 0
         while start < stop:
