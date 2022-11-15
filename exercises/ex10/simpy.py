@@ -33,7 +33,7 @@ class Simpy:
             start += step
 
     def sum(self) -> float:
-        """Returns sum of a list"""
+        """Returns sum of a list."""
         result: float = sum(self.values)
         return result
 
@@ -46,6 +46,7 @@ class Simpy:
             while i < len(self.values):
                 new_value: float = self.values[i] + rhs.values[i]
                 result.values.append(new_value)
+                i += 1
             return result
         if isinstance(rhs, float):
             for value in self.values:
@@ -102,9 +103,19 @@ class Simpy:
                 result.append(truth)
             return result
 
-    def __getitem__(self, rhs: int) -> float:
+    def __getitem__(self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
         """Gives Simply subscription operator abilities."""
-        result: float = self.values[rhs]
-        return result
+        if (rhs, int):
+            result: float = self.values[rhs]
+            return result
+        else:
+            result: Simpy = ([])
+            i: int = 0
+            while i < len(self.values):
+                if rhs[i] is True:
+                    result.values.append(self.values[i])
+                i += 1
+            return result
+
 
     # TODO: Your constructor and methods will go here.
