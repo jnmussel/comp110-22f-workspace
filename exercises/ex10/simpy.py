@@ -24,7 +24,7 @@ class Simpy:
         for _ in range(the_int):
             self.values.append(the_float)
     
-    def arange(self, start: int, stop: int, step: float = 1.0) -> None:
+    def arange(self, start: float, stop: float, step: float = 1.0) -> None:
         """Fills in a list with a start, stop, and step."""
         while abs(start) < abs(stop):
             self.values.append(start)
@@ -107,8 +107,8 @@ class Simpy:
             result: float = self.values[rhs]
             return result
         else:
-            result: Simpy = ([])
+            result: Simpy = Simpy([])
             for _ in range(len(rhs)):
                 if rhs[_] is True:
-                    result.values.append(self.values[i])
+                    result.values.append(self.values[_])
             return result
