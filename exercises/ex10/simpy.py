@@ -20,18 +20,16 @@ class Simpy:
 
     def fill(self, the_float: float, the_int: int) -> None:
         """Fills a list with a specific number of repeating values."""
-        i: int = 0
-        while i < the_int:
+        self.values = []
+        for _ in range(the_int):
             self.values.append(the_float)
-            i += 1
     
     def arange(self, start: int, stop: int, step: float = 1.0) -> None:
         """Fills in a list with a start, stop, and step."""
-        assert step != 0
-        for _ in range(start, stop)
-            self.values.append(_)
+        while abs(start) < abs(stop):
+            self.values.append(start)
+            start += step
         
-
     def sum(self) -> float:
         """Returns sum of a list."""
         result: float = sum(self.values)
@@ -44,14 +42,13 @@ class Simpy:
             assert len(self.values) == len(rhs.values)
             i: int = 0
             while i < len(self.values):
-                new_value: float = self.values[i] + rhs.values[i]
-                result.values.append(new_value)
+                result.values.append(self.values[i] + rhs.values[i])
                 i += 1
             return result
-        if isinstance(rhs, float):
-            for value in self.values:
-                value += rhs
-                result.values.append(value)
+        else:
+            for value in range(len(self.values)):
+                new_value: float = self.values[value] + rhs
+                result.values.append(new_value)
             return result
 
     def __pow__(self, rhs: Union[float, Simpy]) -> Simpy:
@@ -61,14 +58,13 @@ class Simpy:
             assert len(self.values) == len(rhs.values)
             i: int = 0
             while i < len(self.values):
-                new_value: float = self.values[i] ** rhs.values[i]
-                result.values.append(new_value)
+                result.values.append(self.values[i] ** rhs.values[i])
                 i += 1
             return result
-        if isinstance(rhs, float):
-            for value in self.values:
-                value ** rhs
-                result.values.append(value)
+        else:
+            for value in range(len(self.values)):
+                new_value: float = self.values[value] ** rhs
+                result.values.append(new_value)
             return result
 
     def __eq__(self, rhs: Union[float, Simpy]) -> list[bool]:
@@ -88,32 +84,31 @@ class Simpy:
             return result
 
     def __gt__(self, rhs: Union[float, Simpy]) -> list[bool]:
-        """Gt function."""
+        """Greater than function."""
         result: list[bool] = []
         if isinstance(rhs, Simpy):
             assert len(self.values) == len(rhs.values)
-            i: int = 0
-            while i < len(self.values):
-                truth: bool = (self.values[i] > rhs.values[i])
-                result.append(truth)
-                i += 1
-            return result
-        if isinstance(rhs, float):
-            for value in self.values:
-                truth: bool = (rhs < value)
-                result.append(truth)
-            return result
+            for i in range(len(self.values)):
+                if self.values[i] > rhs.values[i]:
+                    result.append(True)
+                else:
+                    result.append(False)
+        else:
+            for value in range(len(self.values)):
+                if self.values[value] > rhs:
+                    result.append(True)
+                else:
+                    result.append(False)
+        return result
 
     def __getitem__(self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
         """Gives Simply subscription operator abilities."""
-        if (rhs, int):
+        if isinstance(rhs, int):
             result: float = self.values[rhs]
             return result
         else:
             result: Simpy = ([])
-            i: int = 0
-            while i < len(self.values):
-                if rhs[i] is True:
+            for _ in range(len(rhs)):
+                if rhs[_] is True:
                     result.values.append(self.values[i])
-                i += 1
             return result
