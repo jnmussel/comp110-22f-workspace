@@ -28,9 +28,9 @@ class Simpy:
     def arange(self, start: int, stop: int, step: float = 1.0) -> None:
         """Fills in a list with a start, stop, and step."""
         assert step != 0
-        while start < stop:
-            self.values.append(start)
-            start += step
+        for _ in range(start, stop)
+            self.values.append(_)
+        
 
     def sum(self) -> float:
         """Returns sum of a list."""
@@ -72,13 +72,13 @@ class Simpy:
             return result
 
     def __eq__(self, rhs: Union[float, Simpy]) -> list[bool]:
+        """Defines equal."""
         result: list[bool] = []
         if isinstance(rhs, Simpy):
             assert len(self.values) == len(rhs.values)
             i: int = 0
             while i < len(self.values):
-                truth: bool = (self.values[i] == rhs.values[i])
-                result.append(truth)
+                result.append(self.values[i] == rhs.values[i])
                 i += 1
             return result
         if isinstance(rhs, float):
@@ -88,6 +88,7 @@ class Simpy:
             return result
 
     def __gt__(self, rhs: Union[float, Simpy]) -> list[bool]:
+        """Gt function."""
         result: list[bool] = []
         if isinstance(rhs, Simpy):
             assert len(self.values) == len(rhs.values)
@@ -99,7 +100,7 @@ class Simpy:
             return result
         if isinstance(rhs, float):
             for value in self.values:
-                truth: bool = (rhs > value)
+                truth: bool = (rhs < value)
                 result.append(truth)
             return result
 
@@ -116,6 +117,3 @@ class Simpy:
                     result.values.append(self.values[i])
                 i += 1
             return result
-
-
-    # TODO: Your constructor and methods will go here.
