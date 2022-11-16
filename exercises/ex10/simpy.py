@@ -8,6 +8,7 @@ __author__ = "730471672"
 
 
 class Simpy:
+    """Defines class Simpy."""
     values: list[float]
 
     def __init__(self, values: list[float]) -> None:
